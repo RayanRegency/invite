@@ -756,8 +756,31 @@
 
   // --- Коноктун атын шилтемеден (URL) окуп, ордуна коюу ---
   // Шилтеме мисалы: invitation.html?name=Айдана%20Осмонова
+  //
+  // Эскертүү: айрым учурда (мисалы, шилтеме iPhone'до Safari дарек тилкесине
+  // кол менен чиркелгенде) %20 кайра бир жолу кодулануп, %2520 болуп калат.
+  // Ошондуктан бул жерде %-белгилери калбай калганга чейин бир нече жолу
+  // decodeURIComponent аркылуу аны түзөтөбүз.
+  function getDecodedGuestName(rawValue){
+    if (!rawValue) return rawValue;
+    let value = rawValue;
+    let previous;
+    let attempts = 0;
+    while (/%[0-9A-Fa-f]{2}/.test(value) && attempts < 4) {
+      previous = value;
+      try {
+        value = decodeURIComponent(value);
+      } catch (e) {
+        break; // эгер туура эмес форматта болсо, токтотобуз
+      }
+      if (value === previous) break;
+      attempts++;
+    }
+    return value;
+  }
+
   const params = new URLSearchParams(window.location.search);
-  const guestName = params.get('name');
+  const guestName = getDecodedGuestName(params.get('name'));
   const guestNameEl = document.getElementById('guestName');
 
   if (guestName && guestNameEl) {
