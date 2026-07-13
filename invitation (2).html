@@ -4,6 +4,17 @@
 <meta charset="UTF-8" />
 <title>RAYAN Regency — Ачылыш аземи</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Open Graph теги — үчүн WhatsApp, Telegram, Instagram ж.б. алдын ала көрүнүш (превью) чыгарат -->
+<meta property="og:title" content="RAYAN Regency — Ачылыш аземи">
+<meta property="og:description" content="17-июль, 2026-жыл, саат 10:00. Мейманкананын расмий ачылышына сизди чакырабыз!">
+<meta property="og:image" content="https://rayanregency.github.io/invite/image/logo.jpeg">
+<meta property="og:url" content="https://rayanregency.github.io/invite">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -48,6 +59,19 @@
     box-shadow: 0 10px 40px rgba(0,58,111,0.12);
   }
 
+  /* На мобильных экранах карточка занимает весь экран без отступов сверху/снизу/по бокам */
+  @media (max-width: 480px){
+    .container{
+      max-width:100%;
+      padding: 0;
+    }
+    .card{
+      border-radius: 0;
+      box-shadow: none;
+      min-height: 100vh;
+    }
+  }
+
   /* верхний тёмно-синий блок с логотипом */
   .hero{
     background: var(--navy);
@@ -74,31 +98,14 @@
     pointer-events:none;
   }
 
-  .logo{
-    font-family:'Geologica', sans-serif;
-    font-weight:500;
-    font-size:46px;
-    letter-spacing:10px;
+  .logo-img{
     position:relative;
     z-index:1;
-    margin:0;
-  }
-
-  .logo .a-mirror{
-    display:inline-block;
-    transform: scaleX(-1);
-  }
-
-  .descriptor{
-    position:relative;
-    z-index:1;
-    font-family:'Geologica', sans-serif;
-    font-weight:300;
-    font-size:13px;
-    letter-spacing:5px;
-    margin-top:6px;
-    color: var(--almond);
-    text-transform:uppercase;
+    display:block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
   }
 
   .hero-title{
@@ -298,7 +305,15 @@
     padding: 26px 20px 30px;
   }
 
-  .footer-title{
+  .footer-label{
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#fff;
+    margin-bottom:6px;
+  }
+
+ .footer-title{
     font-family:'Geologica', sans-serif;
     font-weight:500;
     font-size:20px;
@@ -307,13 +322,6 @@
     text-transform:uppercase;
   }
 
-  .footer-sub{
-    font-size:12px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    color:#fff;
-    margin-top:4px;
-  }
 
   .gallery-btn-wrap{
     text-align:center;
@@ -346,6 +354,7 @@
     width:16px;
     height:16px;
     fill:#fff;
+    flex-shrink:0;
   }
 
   /* модальная галерея */
@@ -377,14 +386,20 @@
 
   .modal-close{
     position:absolute;
-    top:12px;
-    right:14px;
-    background:none;
+    top:10px;
+    right:12px;
+    background:rgba(0,58,111,0.06);
     border:none;
-    font-size:26px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    font-size:22px;
     line-height:1;
     color: var(--navy);
     cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
 
   .modal-title{
@@ -416,6 +431,7 @@
     font-size:11px;
     text-align:center;
     padding: 6px;
+    cursor: pointer;
   }
 
   .gallery-item img{
@@ -423,6 +439,81 @@
     height:100%;
     object-fit:cover;
     display:block;
+    pointer-events:none;
+  }
+
+  /* полноэкранный просмотр фото (lightbox) */
+  .lightbox-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background: rgba(0,10,20,0.95);
+    z-index: 1100;
+    justify-content:center;
+    align-items:center;
+  }
+
+  .lightbox-overlay.active{
+    display:flex;
+  }
+
+  .lightbox-overlay img{
+    max-width: 92vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+  }
+
+  .lightbox-close{
+    position:absolute;
+    top:18px;
+    right:18px;
+    background: rgba(255,255,255,0.12);
+    border:none;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    color:#fff;
+    font-size:26px;
+    line-height:1;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .lightbox-nav{
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.12);
+    border:none;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    color:#fff;
+    font-size:22px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .lightbox-prev{ left:14px; }
+  .lightbox-next{ right:14px; }
+
+  .lightbox-counter{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform: translateX(-50%);
+    color:#fff;
+    font-size:12px;
+    letter-spacing:1px;
+    background: rgba(255,255,255,0.12);
+    padding:6px 14px;
+    border-radius:100px;
   }
 
 </style>
@@ -434,9 +525,8 @@
 
     <div class="hero">
       <div class="pattern">RAYAN&nbsp;RAYAN&nbsp;RAYAN&nbsp;RAYAN<br>RAYAN&nbsp;RAYAN&nbsp;RAYAN&nbsp;RAYAN<br>RAYAN&nbsp;RAYAN&nbsp;RAYAN&nbsp;RAYAN</div>
-      <p class="logo">R<span class="a-mirror">A</span>YAN</p>
-      <div class="descriptor">Regency Hotel</div>
-      <div class="hero-title">Расмий ачылыш аземи</div>
+      <img src="image/logo-transparent.png" alt="Rayan Regency Hotel" class="logo-img" />
+      <div class="hero-title">ЧАКЫРУУ</div>
     </div>
 
     <div class="body-block">
@@ -476,9 +566,9 @@
         <strong>📍 Дареги:</strong><br>
         Ош шаары, Алымбек Датка көчөсү 62/5
         <br><br>
-        <strong>🕒 Башталышы:</strong> ___ саат
+        <strong>🕒 Башталышы:</strong> 10:00 саат
         <br><br>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="map-link">Картадан караңыз</a>
+        <a href="https://2gis.kg/bishkek/geo/70000001115325038/72.816373,40.502702" target="_blank" rel="noopener noreferrer" class="map-link">Картадан караңыз</a>
       </div>
 
       <div class="timer-label">Ачылышка чейин калган убакыт</div>
@@ -498,9 +588,10 @@
     </div>
 
 
+
     <div class="footer">
       <div class="footer-title">Терең урматтоо менен</div>
-      <div class="footer-sub">Rayan Regency жамааты</div>
+      <div class="footer-title">Ибрагимов Каюмжан</div>
     </div>
 
   </div>
@@ -512,6 +603,14 @@
     <div class="modal-title">Мейманкананын сүрөттөрү</div>
     <div class="gallery-grid" id="galleryGrid"></div>
   </div>
+</div>
+
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
 <script>
@@ -582,23 +681,99 @@
   ];
 
   const galleryGrid = document.getElementById('galleryGrid');
+  const validPhotoSrcs = [];
 
-  photoFiles.forEach(name => {
+  photoFiles.forEach((name, index) => {
     const item = document.createElement('div');
     item.className = 'gallery-item';
+    const src = 'image/' + encodeURIComponent(name);
     const img = document.createElement('img');
-    img.src = 'image/' + encodeURIComponent(name);
+    img.src = src;
     img.alt = name;
     img.loading = 'lazy';
     img.onerror = function(){ item.innerHTML = '<span style="font-size:10px;">' + name + '<br>табылган жок</span>'; };
     item.appendChild(img);
+    item.addEventListener('click', function(){ openLightbox(index); });
     galleryGrid.appendChild(item);
+    validPhotoSrcs.push(src);
+  });
+
+  // --- Полноэкранный просмотр фото ---
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  let currentPhotoIndex = 0;
+
+  function openLightbox(index){
+    currentPhotoIndex = index;
+    showPhoto();
+    lightbox.classList.add('active');
+  }
+
+  function showPhoto(){
+    lightboxImg.src = validPhotoSrcs[currentPhotoIndex];
+    lightboxCounter.textContent = (currentPhotoIndex + 1) + ' / ' + validPhotoSrcs.length;
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('active');
+    lightboxImg.src = '';
+  }
+
+  function showNext(){
+    currentPhotoIndex = (currentPhotoIndex + 1) % validPhotoSrcs.length;
+    showPhoto();
+  }
+
+  function showPrev(){
+    currentPhotoIndex = (currentPhotoIndex - 1 + validPhotoSrcs.length) % validPhotoSrcs.length;
+    showPhoto();
+  }
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxNext').addEventListener('click', showNext);
+  document.getElementById('lightboxPrev').addEventListener('click', showPrev);
+
+  // клик по тёмному фону закрывает окно
+  lightbox.addEventListener('click', function(e){
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // управление клавиатурой
+  document.addEventListener('keydown', function(e){
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
   });
 
   // --- Коноктун атын шилтемеден (URL) окуп, ордуна коюу ---
   // Шилтеме мисалы: invitation.html?name=Айдана%20Осмонова
+  //
+  // Эскертүү: айрым учурда (мисалы, шилтеме iPhone'до Safari дарек тилкесине
+  // кол менен чиркелгенде) %20 кайра бир жолу кодулануп, %2520 болуп калат.
+  // Ошондуктан бул жерде %-белгилери калбай калганга чейин бир нече жолу
+  // decodeURIComponent аркылуу аны түзөтөбүз.
+  function getDecodedGuestName(rawValue){
+    if (!rawValue) return rawValue;
+    let value = rawValue;
+    let previous;
+    let attempts = 0;
+    while (/%[0-9A-Fa-f]{2}/.test(value) && attempts < 4) {
+      previous = value;
+      try {
+        value = decodeURIComponent(value);
+      } catch (e) {
+        break; // эгер туура эмес форматта болсо, токтотобуз
+      }
+      if (value === previous) break;
+      attempts++;
+    }
+    return value;
+  }
+
   const params = new URLSearchParams(window.location.search);
-  const guestName = params.get('name');
+  const guestName = getDecodedGuestName(params.get('name'));
   const guestNameEl = document.getElementById('guestName');
 
   if (guestName && guestNameEl) {
