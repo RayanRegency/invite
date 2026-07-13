@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8" />
+  <title>Тойго чакыруу</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Champignon&display=swap" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+MX+Guides&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Imperial+Script&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    .bakai{
+    font-family: 'Great Vibes', cursive;
+    font-size: 96px;
+    margin-top: 80px;
+    margin-bottom: -20px;
+    position: relative;
+    }
+
+    .a{
+    font-family: 'Imperial Script', cursive;
+    font-size: 106px;
+    margin: 30px 0;
+    position: relative;
+    }
+    .and{
+    font-family: 'Imperial Script', cursive;
+    font-size: 66px;
+    }
+
+    .names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 96px;
+    margin-top: -20px ;
+    position: relative;
+    }
+    .names::before {
+    content: "B";
+    position: absolute;
+    font-size: 165px;
+    color: rgba(0,0,0,0.05);
+    left: 40%;
+    top: -120%;
+    transform: translate(-60%, -50%);
+    font-family: 'Great Vibes', cursive;
+    }
+
+    .names::after {
+    content: "A";
+    position: absolute;
+    font-size: 190px;
+    color: rgba(0,0,0,0.05);
+    left: 60%;
+    top: -130%;
+    transform: translate(-40%, -50%);
+    font-family: 'Imperial Script', sans-serif; /* другой шрифт для A */
+    }
+
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    }
+
+    body {
+    background-image: url('4L6B8878.JPG');
+    background-repeat: no-repeat, no-repeat;
+    background-position: top center, bottom center;
+    background-size: 350%, 0%;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Bona Nova SC', sans-serif;
+    font-size: 10px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    }
+
+    .map-link {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 6px 10px;
+    background-color: transparent;
+    border: 2px solid #f3d1c8;
+    border-radius: 100px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: all 0.3s;
+    }
+
+    .map-link:hover {
+    background-color: #f3d1c8;
+    color: #fff;
+    }
+
+    .container {
+    width: 90%;
+    max-width: 400px;
+    padding: 40px 0;
+    }
+
+    h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 52px;
+    margin: 20 0 0;
+    text-align: center;
+    user-select: none;
+    font-weight: 300;
+    color: #000;
+    text-shadow: 2px 2px 6px rgba(255,255,255,0.6);
+    }
+
+    .card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    padding-bottom: 20px;
+    }
+
+    .section {
+    padding: 0px 15px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    }
+
+    .section:last-child {
+    border-bottom: none;
+    }
+
+    .year-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    }
+
+    .date-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 100px;
+    font-weight: 400;
+    line-height: 1;
+    font-family: 'Allura', cursive;
+    margin-left: -50px;
+    }
+
+    .date-column > div {
+    margin: 0;
+    margin-top: -40px;
+    }
+
+    .date-column > div:first-child {
+    margin-top: 0;
+    }
+
+    .line {
+    width: 4px; /* шире */
+    height: 180px;
+    background-color: rgba(128, 128, 128, 0.4); /* серый с прозрачностью 0.4 */
+    margin: 10px 10px 30px 15px;
+    }
+
+
+    .save-date {
+    font-size: 18px;
+    margin-top:125px;
+        text-align: left;  /* ← выравнивание */
+
+    text-transform: uppercase;
+    }
+
+
+    .greeting {
+    font-size: 25px;
+    margin: 30px 0 15px;
+    position: relative; /* обязательно для ::before */
+
+    }
+
+
+    .message {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    }
+
+    .final-text {
+    font-size: 25px;
+    margin-top: 30px;
+
+    margin-bottom: 8px;
+    }
+
+    .date-time {
+    font-size: 26px;
+    color: #b97c7c;
+
+    }
+
+    .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 5fr);
+    gap: 4px;
+    justify-items: center;
+    font-size: 17px;
+    margin: 30px 20px 20px;
+    }
+
+    .calendar div {
+    padding: 4px;
+    border-radius: 4px;
+    user-select: none;
+
+    }
+
+
+    .calendar .marked {
+    background: #f3d1c8;
+    font-weight: bold;
+
+    border-radius: 50px; /* скругление */
+    }
+
+    .info {
+    margin: 30px 0;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+    }
+
+
+    a {
+    color: #333;
+    text-decoration: underline;
+    }
+
+    .footer-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    margin-top: 20px;
+    user-select: none;
+    }
+
+    .timer {
+    margin-top: 30px;
+    text-align: center;
+    font-family: 'Parisienne', cursive;
+    font-size: 34px;
+    color: #333;
+    }
+
+    .countdown {
+    font-size: 24px;
+    margin-top: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+
+    }
+    .ft{
+    font-family: 'Bona Nova SC', cursive;
+    font-size: 27px;
+
+    }
+    .countdown span {
+    margin: 0 6px;
+
+    }
+  </style>
+</head>
+<body>
+<!-- Вставь в <body>, например сразу после <div class="container"> -->
+
+
+<div class="container">
+  <div class="card" id="combinedCard">
+      <h1>Тойго чакыруу</h1>
+
+    <div class="section">
+      <div class="year-container">
+        <div class="date-column">
+          <div>24</div>
+          <div>10</div>
+          <div>25</div>
+        </div>
+        <div class="line"></div>
+        <div class="save-date">Сиздерди
+          <br>чакырабыз</div>
+      </div>
+      <div class="bakai">Бакай</div>
+      <div class="and">&</div>
+
+      <div class="names"><span class="a"> A</span>йдана</div>
+
+      <div class="greeting">Урматтуу туугандар жана достор!</div>
+      <div class="message">
+
+Сиздерди үйлөнүү тоюбузга
+арналган салтанатка
+келип, ак никебизге күбө
+болуп,
+кадырлуу коногубуз болуп кетүүгө
+чакырабыз.      </div>
+      <div class="final-text">Сиздерди күтөбүз!</div>
+      <div class="date-time">24.10.2025<div>18:00</div>
+    </div>
+
+    <div class="section">
+            <div class="final-text">Октябрь</div>
+      <div class="calendar">
+        <div>Дш</div><div>Шш</div><div>Шр</div><div>Бш</div><div>Жм</div><div>Иш</div><div>Жш</div>
+        <div></div><div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+        <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
+        <div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div>
+        <div>20</div><div>21</div><div>22</div><div>23</div><div class="marked">24</div><div>25</div><div>26</div>
+        <div>27</div><div>28</div><div>29</div><div>30</div><div>31</div>
+      </div>
+      <div class="info">
+        <strong>Өткөрүлүүчү жай:</strong><br>
+        Бишкек шаары, 7-апрель көчөсү 2/3,<br>
+        "Meikin" банкет залы<br>
+        <a href="https://2gis.kg/bishkek/geo/70000001074870906/74.637972,42.838435"
+           target="_blank" rel="noopener noreferrer" class="map-link">
+             - 📍 Картадан караңыз -
+        </a>
+      </div>
+
+      <div class="timer" id="timer">
+        <div class="ft">Тойго чейин калган убакыт:</div>
+        <div class="countdown">
+          <span id="days">00</span>к
+          <span id="hours">00</span>с
+          <span id="minutes">00</span>м
+          <span id="seconds">00</span>с
+        </div>
+      </div>
+
+      <div class="footer-names">Той ээси:<br>Динара, Бакай</div>
+  </div>
+</div>
+
+<script>
+  function startCountdown(targetTime) {
+  const daysEl = document.getElementById('days');
+  const hoursEl = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+  const secondsEl = document.getElementById('seconds');
+
+  function updateTimer() {
+    const now = new Date().getTime();
+    let diff = targetTime - now;
+
+    if (diff <= 0) {
+      daysEl.textContent = '00';
+      hoursEl.textContent = '00';
+      minutesEl.textContent = '00';
+      secondsEl.textContent = '00';
+      clearInterval(timerInterval);
+      return;
+    }
+
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+
+    const days = Math.floor(diff / day);
+    const hours = Math.floor((diff % day) / hour);
+    const minutes = Math.floor((diff % hour) / minute);
+    const seconds = Math.floor((diff % minute) / second);
+
+    daysEl.textContent = days < 10 ? '0' + days : days;
+    hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+    minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
+    secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+  }
+
+  updateTimer();
+  const timerInterval = setInterval(updateTimer, 1000);
+}
+
+const weddingDateStr = '2025-10-24T18:00:00';
+const weddingDate = new Date(weddingDateStr).getTime();
+
+if (!isNaN(weddingDate)) {
+  startCountdown(weddingDate);
+} else {
+  console.error('Ката: туура эмес дата форматы', weddingDateStr);
+  document.getElementById('timer').innerHTML = '<div>Таймер ката берди</div>';
+}
+</script>
+</body>
+</html>
