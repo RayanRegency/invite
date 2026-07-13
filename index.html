@@ -48,6 +48,19 @@
     box-shadow: 0 10px 40px rgba(0,58,111,0.12);
   }
 
+  /* На мобильных экранах карточка занимает весь экран без отступов сверху/снизу/по бокам */
+  @media (max-width: 480px){
+    .container{
+      max-width:100%;
+      padding: 0;
+    }
+    .card{
+      border-radius: 0;
+      box-shadow: none;
+      min-height: 100vh;
+    }
+  }
+
   /* верхний тёмно-синий блок с логотипом */
   .hero{
     background: var(--navy);
